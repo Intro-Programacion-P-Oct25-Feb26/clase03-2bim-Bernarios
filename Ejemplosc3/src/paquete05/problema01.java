@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author danielrios
  */
-public class problema01 {
+public class Problema01 {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
@@ -21,8 +21,24 @@ public class problema01 {
         double[] sumaProduccion = new double[5];
 
         for (int i = 0; i < nombresEstaciones.length; i++) {
-            System.out.print("Ingrese nombre encargado estación " + (i + 1) + ": ");
+            System.out.print("Ingrese nombre encargado estación " + (i + 1)
+                    + "\n");
             nombresEstaciones[i] = entrada.nextLine();
+            for (int j = 0; j < 12; j++) {
+                System.out.print("Producción del Mes " + (j + 1) + "\n");
+                produccion[i][j] = entrada.nextDouble();
+
+            }
+        }
+        double produccionMayor = 0;
+        int primeraPosicion = 0;
+
+        for (int i = 0; i < 5; i++) {
+            double sumaFila = 0;
+
+            for (int j = 0; j < 12; j++) {
+                sumaFila = sumaFila + produccion[i][j];
+            }
 
         }
     }
