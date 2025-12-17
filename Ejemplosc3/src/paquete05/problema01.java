@@ -17,8 +17,7 @@ public class Problema01 {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         String[] nombresEstaciones = new String[5];
-        double[][] produccion = new double[5][12];
-        double[] sumaProduccion = new double[5];
+        int[][] produccion = new int[5][12];
 
         for (int i = 0; i < nombresEstaciones.length; i++) {
             System.out.print("Ingrese nombre encargado estación " + (i + 1)
@@ -26,20 +25,33 @@ public class Problema01 {
             nombresEstaciones[i] = entrada.nextLine();
             for (int j = 0; j < 12; j++) {
                 System.out.print("Producción del Mes " + (j + 1) + "\n");
-                produccion[i][j] = entrada.nextDouble();
-
+                produccion[i][j] = entrada.nextInt();
+                entrada.nextLine();
             }
         }
-        double produccionMayor = 0;
+        int produccionMayor = 0;
         int primeraPosicion = 0;
 
         for (int i = 0; i < 5; i++) {
-            double sumaFila = 0;
+            int sumaFila = 0;
 
             for (int j = 0; j < 12; j++) {
                 sumaFila = sumaFila + produccion[i][j];
             }
+            System.out.printf("\n%s Estación %s - Total Producción: $ %s", 
+                    nombresEstaciones[i], (i + 1), sumaFila);
 
+            if (sumaFila > produccionMayor) {
+                produccionMayor = sumaFila;
+                primeraPosicion = i;
+            }
         }
+
+        System.out.printf("\nEstación más productiva: Estación %d\n"
+                + "Encargado de la estación: %s\n"
+                + "Cantidad de la estación más productiva: $ %s\n",
+                (primeraPosicion + 1),
+                nombresEstaciones[primeraPosicion],
+                produccionMayor);
     }
 }
